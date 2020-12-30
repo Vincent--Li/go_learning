@@ -3,27 +3,27 @@ package main
 import "fmt"
 
 func main(){
-	queue := make(chan int)
+	const UPPER int = 100
+	queue := make(chan int, 10)
+	defer close(queue)
 
-	go func(){
-		for i:= 20; i>=1 ; i-- {
-
-				result := 1
-				for j := 1; j<= i; j++ {
-					result *= j
-				}
-				fmt.Printf("writing data to %d\n", result)
-				queue <- result
-		}
-	}()
-
+	queue <- 1
 
 	for item := range queue {
 		fmt.Printf("about to handle item %d\n", item)
 
-		if item == 1 {
+		if item == UPPER {
 			break
 		}
+
+		go func(){
+			facVal := 1
+			for i := 1; i <= item ; i++  {
+				facVal *= i
+			}
+			fmt.Printf("handle item %d, result is %v\n", item, facVal)
+			queue <- item + 1
+		}()
 	}
 
 }
