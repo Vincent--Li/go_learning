@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-12-13 00:51:02
+ * @LastEditTime: 2021-01-03 23:03:18
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \go_learning\lissajous\lissaajous.go
+ */
 package main
 
 import (
@@ -11,7 +19,7 @@ import (
 	"time"
 )
 
-var palette = []color.RGBA{ Rx00, 0xff, 0x00, 0xFF}
+var palette = []color.RGBA{100, 100, 100, 100}
 
 const (
 	whiteIndex = 0
@@ -25,17 +33,17 @@ func main() {
 
 func lissajous(out io.Writer) {
 	const (
-		cycles = 5
-		res = 0.001
-		size = 100
+		cycles  = 5
+		res     = 0.001
+		size    = 100
 		nframes = 64
-		delay = 8
+		delay   = 8
 	)
 
 	freq := rand.Float64() * 3.0
 	anim := gif.GIF{LoopCount: nframes}
 	phase := 0.0
-	for i:=0; i < nframes; i++ {
+	for i := 0; i < nframes; i++ {
 		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
 		img := image.NewPaletted(rect, palette)
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
@@ -48,7 +56,6 @@ func lissajous(out io.Writer) {
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
 		anim.Image = append(anim.Image, img)
-
 
 	}
 

@@ -3,7 +3,7 @@ package main
 /*
  * @Author: your name
  * @Date: 2020-11-21 20:57:41
- * @LastEditTime: 2020-12-12 21:26:02
+ * @LastEditTime: 2021-01-03 23:02:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \go_learning\hello.go
@@ -94,12 +94,12 @@ func main() {
 
 	fmt.Println("天龙八部\r张飞厉害")
 
-	fmt.Println(constants.DEFAULT_STUDENT_NAME)
+	// fmt.Println(constants.DEFAULT_STUDENT_NAME)
 
-	fmt.Println(constants.A)
-	fmt.Println(constants.B)
-	fmt.Println(constants.C)
-	fmt.Println(constants.D)
+	// fmt.Println(constants.A)
+	// fmt.Println(constants.B)
+	// fmt.Println(constants.C)
+	// fmt.Println(constants.D)
 }
 
 func functionTest(a, b int) (sum int) {
@@ -131,9 +131,9 @@ func chpointer(a *int) {
 }
 
 // defer function
-func deferTest(){
+func deferTest() {
 	defer func() {
-		fmt.Print(add(1,2))
+		fmt.Print(add(1, 2))
 	}()
 	fmt.Print("i like play basketball")
 }
